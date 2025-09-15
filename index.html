@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Ensure the main document doesn't scroll, allowing the inner container to handle it */
+      html, body {
+        overflow: hidden;
+        height: 100%;
+      }
+      #root {
+        height: 100%;
+      }
+      /* For custom scrollbar (optional, but enhances the aesthetic) */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0d1117;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1f2937;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #374151;
+      }
+
+      /* Scroll Animation Styles */
+      .animate-section .animate-item {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+
+      .animate-section.is-visible .animate-item {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .animate-item.delay-100 { transition-delay: 100ms; }
+      .animate-item.delay-200 { transition-delay: 200ms; }
+      .animate-item.delay-300 { transition-delay: 300ms; }
+      .animate-item.delay-400 { transition-delay: 400ms; }
+      .animate-item.delay-500 { transition-delay: 500ms; }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-black">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
