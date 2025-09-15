@@ -11,7 +11,7 @@ const InputField: React.FC<{
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }> = ({ id, label, type, placeholder, icon, value, onChange }) => (
   <div className="text-left">
-    <label htmlFor={id} className="mb-1.5 flex items-center gap-2 text-sm font-medium text-green-400">
+  <label htmlFor={id} className="mb-1.5 flex items-center gap-2 text-sm font-medium text-teal-400">
       {icon}
       {label}
     </label>
@@ -22,7 +22,7 @@ const InputField: React.FC<{
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className="w-full rounded-lg border border-green-500/30 bg-gray-900/50 px-3 py-2.5 text-sm text-gray-300 placeholder-gray-500 transition-colors duration-300 focus:border-green-400 focus:outline-none focus:ring-1 focus:ring-green-400"
+  className="w-full rounded-lg border border-teal-500/30 bg-gray-900/50 px-3 py-2.5 text-sm text-gray-300 placeholder-gray-500 transition-colors duration-300 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400"
       required
     />
   </div>
@@ -73,7 +73,7 @@ const Contact: React.FC = () => {
             <span className="text-gray-600">GET IN </span>
             <span className="relative inline-block">
                 TOUCH
-                <span className="absolute bottom-[-6px] sm:bottom-[-8px] left-1/2 h-0.5 sm:h-1 w-16 sm:w-20 md:w-24 -translate-x-1/2 transform rounded-full bg-gradient-to-r from-blue-500 to-green-400"></span>
+                <span className="absolute bottom-[-6px] sm:bottom-[-8px] left-1/2 h-0.5 sm:h-1 w-16 sm:w-20 md:w-24 -translate-x-1/2 transform rounded-full bg-gradient-to-r from-teal-500 to-cyan-500"></span>
             </span>
             </h2>
             <p className="mx-auto mt-4 sm:mt-6 max-w-sm text-sm sm:text-base text-gray-400">
@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
             </p>
         </div>
 
-        <div className="mt-6 sm:mt-8 rounded-2xl border border-green-500/20 bg-gray-900/30 p-4 sm:p-6 animate-item delay-200">
+  <div className="mt-6 sm:mt-8 rounded-2xl border border-teal-500/20 bg-gray-900/30 p-4 sm:p-6 animate-item delay-200">
           <div className="space-y-4 sm:space-y-5">
             <InputField
               id="name"
@@ -102,7 +102,7 @@ const Contact: React.FC = () => {
               onChange={handleChange}
             />
             <div className="text-left">
-              <label htmlFor="message" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-green-400">
+              <label htmlFor="message" className="mb-1.5 flex items-center gap-2 text-sm font-medium text-teal-400">
                 <MessageCircle className="w-4 h-4" />
                 Message
               </label>
@@ -113,13 +113,13 @@ const Contact: React.FC = () => {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Tell me about your project, ideas, or just say hello..."
-                className="w-full rounded-lg border border-green-500/30 bg-gray-900/50 px-3 py-2.5 text-sm text-gray-300 placeholder-gray-500 transition-colors duration-300 focus:border-green-400 focus:outline-none focus:ring-1 focus:ring-green-400 resize-none"
+                className="w-full rounded-lg border border-teal-500/30 bg-gray-900/50 px-3 py-2.5 text-sm text-gray-300 placeholder-gray-500 transition-colors duration-300 focus:border-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-400 resize-none"
               ></textarea>
             </div>
           </div>
           <button
             onClick={() => window.open(mailtoLink, '_blank')}
-            className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-green-500 px-6 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-green-400 hover:scale-105"
+            className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30"
           >
             <Send className="w-4 h-4" />
             Send Message

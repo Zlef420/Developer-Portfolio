@@ -13,18 +13,10 @@ import {
   Code,
   Briefcase,
   Mail,
-  // For the skill icons, there isn't a direct one-to-one for the custom SVGs.
-  // I'm using appropriate alternatives from lucide-react.
-  // React: Using 'Atom' as a representation of a component/element.
-  // TypeScript: Using 'FileCode2' as a code file with a number 2, representing a specific language.
-  // Node.js: Using 'Server' as it represents a backend environment.
-  // SQL: Using 'Database' as a generic database representation.
-  // Git: Using 'GitBranch' as a direct representation of Git.
-  // Tailwind CSS: Using 'Palette' as it represents styling/design.
-  Atom, // For React
-  FileCode2, // For TypeScript
-  Server, // For Node.js
-  Database, // For SQL
+  Atom, 
+  FileCode2, 
+  Server, 
+  Database, 
   GitBranch, // For Git
   Palette, // For Tailwind CSS
   // For Contact Form icons

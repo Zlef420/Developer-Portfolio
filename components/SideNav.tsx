@@ -19,7 +19,7 @@ const NavItem: React.FC<NavItemProps> = ({ href, sectionName, activeSection, chi
             className="group relative flex items-center justify-center"
             aria-label={label}
         >
-            <div className={`flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ease-in-out
+            <div className={`flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 ease-in-out
                 ${isActive ? 'bg-teal-500 text-white scale-110 shadow-lg shadow-teal-500/30' : 'bg-gray-800 text-gray-400 group-hover:bg-gray-700 group-hover:text-white group-hover:scale-110'}`}
             >
                 {children}

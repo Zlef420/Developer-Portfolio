@@ -65,10 +65,60 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div 
+    <div
       ref={scrollContainerRef}
-      className="bg-black text-gray-300 font-sans leading-relaxed h-full w-full overflow-y-auto snap-y snap-mandatory"
+      className="relative bg-black text-gray-300 font-sans leading-relaxed h-full w-full overflow-y-auto snap-y snap-mandatory"
     >
+      {/* Enhanced dark, trippy, tech-inspired animated background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0 w-full h-full"
+      >
+        {/* Layer 1: Deep blue/purple blurred blob */}
+        <div
+          className="absolute w-[80vw] h-[60vh] top-[-10%] left-[-20%] opacity-60 mix-blend-lighten"
+          style={{
+            background: 'radial-gradient(ellipse 60% 80% at 50% 50%, #1a1a40 0%, #3a0ca3 60%, transparent 100%)',
+            filter: 'blur(60px) saturate(1.3)',
+            animation: 'trippy1 18s ease-in-out infinite alternate',
+          }}
+        />
+        {/* Layer 2: Neon cyan blurred blob */}
+        <div
+          className="absolute w-[60vw] h-[50vh] bottom-[-15%] right-[-10%] opacity-50 mix-blend-screen"
+          style={{
+            background: 'radial-gradient(ellipse 70% 60% at 60% 40%, #00ffe7 0%, #3a86ff 60%, transparent 100%)',
+            filter: 'blur(48px) saturate(1.2)',
+            animation: 'trippy2 22s ease-in-out infinite alternate',
+          }}
+        />
+        {/* Layer 3: Magenta/pink blurred blob */}
+        <div
+          className="absolute w-[70vw] h-[60vh] top-[30%] left-[40%] opacity-40 mix-blend-lighten"
+          style={{
+            background: 'radial-gradient(ellipse 60% 80% at 40% 60%, #ff00cc 0%, #ff6fff 60%, transparent 100%)',
+            filter: 'blur(70px) saturate(1.1)',
+            animation: 'trippy3 26s ease-in-out infinite alternate',
+          }}
+        />
+        {/* Subtle dark overlay for contrast */}
+        <div className="absolute inset-0 w-full h-full bg-[#0a0a1a] opacity-70" />
+        <style>{`
+          @keyframes trippy1 {
+            0% { transform: scale(1) translateY(0px) translateX(0px); }
+            100% { transform: scale(1.08) translateY(-40px) translateX(30px); }
+          }
+          @keyframes trippy2 {
+            0% { transform: scale(1) translateY(0px) translateX(0px); }
+            100% { transform: scale(1.05) translateY(30px) translateX(-40px); }
+          }
+          @keyframes trippy3 {
+            0% { transform: scale(1) translateY(0px) translateX(0px); }
+            100% { transform: scale(1.1) translateY(-20px) translateX(40px); }
+          }
+        `}</style>
+      </div>
+      {/* Main content above background */}
       <SideNav activeSection={activeSection} />
       <main className="relative z-10">
         <div id="home" ref={sectionRefs.home} className="snap-start">
