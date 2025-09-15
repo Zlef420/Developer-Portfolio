@@ -13,14 +13,24 @@ const projectData: Project[] = [
     { 
         title: "Mr. D Convenience Store Billing and Inventory System", 
         description: "A comprehensive, standalone billing and inventory system engineered single-handedly using VB.NET and an ACCDB database.", 
-        imageUrls: ["https://picsum.photos/seed/proj1a/800/600", "https://picsum.photos/seed/proj1b/800/600", "https://picsum.photos/seed/proj1c/800/600"],
+        imageUrls: [
+          "/images/project1/1.png",
+          "/images/project1/2.png",
+          "/images/project1/3.png"
+        ],
         fullDescription: "Developed from scratch before the widespread use of AI coding assistants, this robust desktop application was a testament to foundational software engineering principles. The system managed all core operations for a convenience store, including point-of-sale transactions, real-time inventory tracking, sales reporting, and user access control. Built with VB.NET for the front-end interface and a Microsoft Access (.accdb) database for data persistence, it provided a reliable and efficient solution for the client's business needs.",
         technologies: ["VB.NET", "Microsoft Access", ".NET Framework"]
     },
     { 
         title: "Self-Order Kiosk For Kuya Bert's Kitchenette", 
         description: "A modern, intuitive self-ordering kiosk application created for a local restaurant, built with React, TypeScript, and Supabase.",
-        imageUrls: ["https://picsum.photos/seed/proj2a/800/600", "https://picsum.photos/seed/proj2b/800/600", "https://picsum.photos/seed/proj2c/800/600"],
+        imageUrls: [
+          "/images/project2/home.jpg",
+          "/images/project2/home1.jpg",
+          "/images/project2/intro.jpg",
+          "/images/project2/revieworder.jpg",
+          "/images/project2/transaction.jpg"
+        ],
         fullDescription: "This solo project showcases proficiency in modern web technologies to create a seamless user experience. The kiosk allows customers to browse the menu, customize their orders, and complete payments without assistance. The front-end, built with React, Vite, and TypeScript, ensures a fast and responsive interface, while Tailwind CSS provides a clean and modern design. Supabase was utilized for the backend, handling the database, user authentication, and real-time order updates, demonstrating full-stack development capabilities.",
         technologies: ["React", "TypeScript", "Vite.js", "Tailwind CSS", "Supabase"]
     },
