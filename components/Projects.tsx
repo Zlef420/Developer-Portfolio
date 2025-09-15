@@ -323,17 +323,17 @@ const Projects: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        let slideInterval: number | undefined;
-        if (isVisible && !isAutoScrollPaused) {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-        return () => {
-            if (slideInterval) {
-                clearInterval(slideInterval);
-            }
-        };
-    }, [isVisible, isAutoScrollPaused, nextSlide]);
+  useEffect(() => {
+    let slideInterval: ReturnType<typeof setInterval> | undefined;
+    if (isVisible && !isAutoScrollPaused) {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    return () => {
+      if (slideInterval) {
+        clearInterval(slideInterval);
+      }
+    };
+  }, [isVisible, isAutoScrollPaused, nextSlide]);
 
   // Modal navigation logic: allow wrap-around and ad slide
   const allSlides = [...projectData, { type: 'ad' }];
