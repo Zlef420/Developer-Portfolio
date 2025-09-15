@@ -44,7 +44,8 @@ const ProjectModal: React.FC<{
   onPrev: () => void;
   isFirst: boolean;
   isLast: boolean;
-}> = ({ project, onClose, onNext, onPrev, isFirst, isLast }) => {
+  isAd?: boolean;
+}> = ({ project, onClose, onNext, onPrev, isFirst, isLast, isAd }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -78,6 +79,39 @@ const ProjectModal: React.FC<{
     }
   }, [project]);
 
+  // If isAd, show the advertisement modal
+  if (isAd) {
+    return (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4 overflow-y-auto"
+        onClick={onClose}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-ad-title"
+      >
+        <div
+          className="relative w-full max-w-3xl bg-gray-900/80 border border-teal-500/30 rounded-lg shadow-2xl shadow-teal-500/10 flex flex-col overflow-hidden mt-8"
+          onClick={e => e.stopPropagation()}
+        >
+          <div className="flex flex-col items-center justify-center p-8">
+            <h2 id="project-modal-ad-title" className="text-2xl font-bold text-white mb-4">Have a Project in Mind?</h2>
+            <p className="text-gray-300 mb-6 text-center max-w-xl">Let's turn your idea into reality. I'm available for freelance work and collaborations. Reach out and let's build something great together!</p>
+            <a href="#contact" className="rounded-md bg-gradient-to-r from-teal-500 to-cyan-500 px-6 py-3 text-base md:px-8 md:py-4 md:text-lg 
+            text-white font-bold shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30 " onClick={onClose}>Contact Me</a>
+          </div>
+          <button
+            onClick={onClose}
+            className="absolute top-2 right-2 p-1.5 rounded-full bg-red-500/80 text-white shadow-lg transition-all hover:bg-red-400 hover:text-white hover:scale-110"
+            aria-label="Close project details"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // If project is null (shouldn't happen, but for safety), don't render modal
   if (!project) {
     return null;
   }
@@ -94,48 +128,45 @@ const ProjectModal: React.FC<{
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4 overflow-y-auto"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
     >
       {/* Main project navigation */}
-      {!isFirst && (
-          <button
-              onClick={(e) => { e.stopPropagation(); onPrev(); }}
-              className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-all"
-              aria-label="Previous project"
-          >
-              <ChevronLeft className="w-5 h-5" />
-          </button>
-      )}
-      {!isLast && (
-          <button
-              onClick={(e) => { e.stopPropagation(); onNext(); }}
-              className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-all"
-              aria-label="Next project"
-          >
-              <ChevronRight className="w-5 h-5" />
-          </button>
-      )}
+    {/* Always show left/right, wrap around including ad */}
+    <button
+      onClick={e => { e.stopPropagation(); onPrev(); }}
+      className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-1.5 rounded-full bg-teal-500/80 text-white shadow-lg transition-all hover:bg-teal-400 hover:text-white hover:scale-110"
+      aria-label="Previous project"
+    >
+      <ChevronLeft className="w-5 h-5" />
+    </button>
+    <button
+      onClick={e => { e.stopPropagation(); onNext(); }}
+      className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-1.5 rounded-full bg-teal-500/80 text-white shadow-lg transition-all hover:bg-teal-400 hover:text-white hover:scale-110"
+      aria-label="Next project"
+    >
+      <ChevronRight className="w-5 h-5" />
+    </button>
 
       <div
-        className="relative w-full max-w-3xl max-h-[85vh] bg-gray-900/80 border border-teal-500/30 rounded-lg shadow-2xl shadow-teal-500/10 flex flex-col overflow-hidden"
+        className="relative w-full max-w-3xl bg-gray-900/80 border border-teal-500/30 rounded-lg shadow-2xl shadow-teal-500/10 flex flex-col overflow-hidden mt-8"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">
-            <img 
-                src={project.imageUrls[currentImageIndex]} 
-                alt={`${project.title} screenshot ${currentImageIndex + 1}`} 
-                className="w-full h-40 sm:h-48 md:h-64 object-cover"
-            />
+      <img 
+        src={project.imageUrls[currentImageIndex]} 
+        alt={`${project.title} screenshot ${currentImageIndex + 1}`} 
+        className="w-full max-h-[60vh] object-contain bg-black"
+      />
             {project.imageUrls.length > 1 && (
                 <>
-                    <button onClick={prevImage} className="absolute top-1/2 -translate-y-1/2 left-2 z-10 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-all" aria-label="Previous Image">
+                    <button onClick={prevImage} className="absolute top-1/2 -translate-y-1/2 left-2 z-10 p-1.5 rounded-full bg-teal-500/80 text-white hover:bg-black/80 transition-all" aria-label="Previous Image">
                         <ChevronLeft className="w-4 h-4" />
                     </button>
-                    <button onClick={nextImage} className="absolute top-1/2 -translate-y-1/2 right-2 z-10 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-all" aria-label="Next Image">
+                    <button onClick={nextImage} className="absolute top-1/2 -translate-y-1/2 right-2 z-10 p-1.5 rounded-full bg-teal-500/80 text-white hover:bg-black/80 transition-all" aria-label="Next Image">
                         <ChevronRight className="w-4 h-4" />
                     </button>
                     <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
@@ -163,7 +194,7 @@ const ProjectModal: React.FC<{
 
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 p-1.5 rounded-full bg-black/50 text-gray-300 hover:bg-black/80 hover:text-white transition-all"
+          className="absolute top-2 right-2 p-1.5 rounded-full bg-red-500/80 text-white shadow-lg transition-all hover:bg-red-400 hover:text-white hover:scale-110"
           aria-label="Close project details"
         >
           <X className="w-4 h-4" />
@@ -304,59 +335,70 @@ const Projects: React.FC = () => {
         };
     }, [isVisible, isAutoScrollPaused, nextSlide]);
 
-  const selectedProject = selectedProjectIndex !== null ? projectData[selectedProjectIndex] : null;
+  // Modal navigation logic: allow wrap-around and ad slide
+  const allSlides = [...projectData, { type: 'ad' }];
+  const isAdModal = selectedProjectIndex === projectData.length;
+  const selectedProject = !isAdModal && selectedProjectIndex !== null ? projectData[selectedProjectIndex] : null;
+
+  // Modal navigation handlers
+  const handleModalNext = () => {
+    if (selectedProjectIndex === null) return;
+    setSelectedProjectIndex((selectedProjectIndex + 1) % allSlides.length);
+  };
+  const handleModalPrev = () => {
+    if (selectedProjectIndex === null) return;
+    setSelectedProjectIndex((selectedProjectIndex - 1 + allSlides.length) % allSlides.length);
+  };
 
   return (
-    <>
-      <section ref={sectionRef} className={`flex min-h-[70vh] items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 animate-section ${isVisible ? 'is-visible' : ''}`}>
-        <div className="text-center container mx-auto max-w-5xl">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white animate-item">My Work</h2>
-          <p className="mt-3 text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base animate-item delay-100">Here are some of the projects I've developed, showcasing my skills in creating modern and functional solutions.</p>
-          
-          <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl mx-auto h-60 sm:h-72 animate-item delay-200">
-              <div className="overflow-hidden w-full h-full">
-                  <div className="flex transition-transform duration-500 ease-in-out h-full" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                      {slides.map((slide, index) => (
-                          <div key={index} className="w-full flex-shrink-0 h-full p-1">
-                              {'title' in slide ? (
-                                  <ProjectCard 
-                                      project={slide as Project} 
-                                      onPause={() => setIsAutoScrollPaused(true)}
-                                      onResume={() => setIsAutoScrollPaused(false)}
-                                      onClick={() => setSelectedProjectIndex(index)}
-                                  />
-                              ) : (
-                                  <CtaCard />
-                              )}
-                          </div>
-                      ))}
-                  </div>
+  <>
+    <section ref={sectionRef} className={`flex min-h-[70vh] items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 animate-section ${isVisible ? 'is-visible' : ''}`}>
+    <div className="text-center container mx-auto max-w-5xl">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white animate-item">My Work</h2>
+      <p className="mt-3 text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base animate-item delay-100">Here are some of the projects I've developed, showcasing my skills in creating modern and functional solutions.</p>
+      <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl mx-auto h-60 sm:h-72 animate-item delay-200">
+        <div className="overflow-hidden w-full h-full">
+          <div className="flex transition-transform duration-500 ease-in-out h-full" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+            {slides.map((slide, index) => (
+              <div key={index} className="w-full flex-shrink-0 h-full p-1">
+                {'title' in slide ? (
+                  <ProjectCard 
+                    project={slide as Project} 
+                    onPause={() => setIsAutoScrollPaused(true)}
+                    onResume={() => setIsAutoScrollPaused(false)}
+                    onClick={() => setSelectedProjectIndex(index)}
+                  />
+                ) : (
+                  <CtaCard />
+                )}
               </div>
-              
-              <button onClick={prevSlide} className="absolute top-1/2 -translate-y-1/2 -left-3 z-10 p-1.5 rounded-full bg-gray-800/80 text-white hover:bg-teal-500/50 transition-all" aria-label="Previous Project">
-                  <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button onClick={nextSlide} className="absolute top-1/2 -translate-y-1/2 -right-3 z-10 p-1.5 rounded-full bg-gray-800/80 text-white hover:bg-teal-500/50 transition-all" aria-label="Next Project">
-                  <ChevronRight className="w-5 h-5" />
-              </button>
-          </div>
-
-          <div className="mt-6 sm:mt-8 animate-item delay-300">
-              <a href="#contact" className="inline-block rounded-md bg-gradient-to-r from-teal-500 to-cyan-500 px-6 py-3 text-base md:px-8 md:py-4 md:text-lg text-white font-bold shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30">
-                  Bring Your Vision to Life
-              </a>
+            ))}
           </div>
         </div>
-      </section>
-      <ProjectModal 
-        project={selectedProject} 
-        onClose={() => setSelectedProjectIndex(null)}
-        onNext={handleNextProject}
-        onPrev={handlePrevProject}
-        isFirst={selectedProjectIndex === 0}
-        isLast={selectedProjectIndex === projectData.length - 1}
-      />
-    </>
+        <button onClick={prevSlide} className="absolute top-1/2 -translate-y-1/2 -left-3 z-10 p-1.5 rounded-full bg-gray-800/80 text-white hover:bg-teal-500/50 transition-all" aria-label="Previous Project">
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button onClick={nextSlide} className="absolute top-1/2 -translate-y-1/2 -right-3 z-10 p-1.5 rounded-full bg-gray-800/80 text-white hover:bg-teal-500/50 transition-all" aria-label="Next Project">
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+      <div className="mt-6 sm:mt-8 animate-item delay-300">
+        <a href="#contact" className="inline-block rounded-md bg-gradient-to-r from-teal-500 to-cyan-500 px-6 py-3 text-base md:px-8 md:py-4 md:text-lg text-white font-bold shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30">
+          Bring Your Vision to Life
+        </a>
+      </div>
+    </div>
+    </section>
+    <ProjectModal
+    project={selectedProject}
+    onClose={() => setSelectedProjectIndex(null)}
+    onNext={handleModalNext}
+    onPrev={handleModalPrev}
+    isFirst={false}
+    isLast={false}
+    isAd={isAdModal}
+    />
+  </>
   );
 };
 
