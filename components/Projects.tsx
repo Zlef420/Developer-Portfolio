@@ -183,7 +183,7 @@ const ProjectModal: React.FC<{
         <h2 id="project-modal-title" className="text-lg sm:text-xl md:text-2xl font-bold text-white">{project.title}</h2>
         {project.title === "Self-Order Kiosk For Kuya Bert's Kitchenette" && (
           <a
-            href="https://self-order-kiosk-for-kuya-bert-kitchenette-erxaox94a.vercel.app/"
+            href="https://self-order-kiosk-for-kuya-bert-kitchenette-cngkv5plv.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-4 inline-block rounded-md bg-gradient-to-r from-teal-500 to-cyan-500 px-5 py-2 text-base font-bold text-white shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30"
