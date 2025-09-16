@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const recipientEmail = "your-email@example.com"; // CHANGE THIS to your actual email
+  const recipientEmail = "johnfelizco13@gmail.com";
   const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(`New message from ${formData.name}`)}&body=${encodeURIComponent(formData.message + `\n\nFrom: ${formData.email}`)}`;
 
   return (

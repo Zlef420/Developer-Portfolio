@@ -115,15 +115,14 @@ const Hero: React.FC = () => {
         </nav>
 
         <div className="mt-8 flex items-center justify-center gap-4 animate-item delay-400">
-          <SocialIcon href="#"><LinkedInIcon /></SocialIcon>
-          <SocialIcon href="#"><GitHubIcon /></SocialIcon>
+          <SocialIcon href="https://www.linkedin.com/in/john-roilan-felizco-20b219382/"><LinkedInIcon /></SocialIcon>
+          <SocialIcon href="https://github.com/Zlef420"><GitHubIcon /></SocialIcon>
           <SocialIcon href="#"><XIcon /></SocialIcon>
           <SocialIcon href="#"><InstagramIcon /></SocialIcon>
         </div>
 
         <a 
-          href="/resume.pdf" 
-          download="John_Felizco_Resume.pdf"
+          href="https://drive.google.com/file/d/1OjU30wutjMWEYhAfv4YNxgie2rVD-evB/view?usp=sharing" 
           target="_blank"
           rel="noopener noreferrer"
           className="relative mt-8 inline-flex items-center justify-center rounded-md bg-gray-800/80 px-8 py-3 text-base sm:text-lg text-gray-300 transition-all duration-300 hover:bg-teal-500/50 hover:text-white hover:scale-105 animate-item delay-500 overflow-hidden group">
