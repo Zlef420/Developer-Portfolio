@@ -77,11 +77,11 @@ const About: React.FC = () => {
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-teal-500 to-purple-600 animate-pulse blur-lg"></div>
             <div className="absolute inset-0 p-0.5 rounded-full bg-gradient-to-br from-teal-400/80 to-purple-600/80">
               <div className="bg-black rounded-full w-full h-full p-1">
-                <img
-                  src="/images/resumepic.png"
-                  alt="John Roilan L. Felizco"
-                  className="rounded-full w-full h-full object-cover object-top"
-                />
+                      <img
+                        src="/Developer-Portfolio/images/resumepic.png"
+                        alt="John Roilan L. Felizco"
+                        className="rounded-full w-full h-full object-cover object-top"
+                      />
               </div>
             </div>
           </div>

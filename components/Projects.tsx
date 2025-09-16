@@ -14,9 +14,9 @@ const projectData: Project[] = [
         title: "Mr. D Convenience Store Billing and Inventory System", 
         description: "A comprehensive, standalone billing and inventory system engineered single-handedly using VB.NET and an ACCDB database.", 
         imageUrls: [
-          "/images/project1/1.png",
-          "/images/project1/2.png",
-          "/images/project1/3.png"
+          "/Developer-Portfolio/images/project1/1.png",
+          "/Developer-Portfolio/images/project1/2.png",
+          "/Developer-Portfolio/images/project1/3.png"
         ],
         fullDescription: "Developed from scratch before the widespread use of AI coding assistants, this robust desktop application was a testament to foundational software engineering principles. The system managed all core operations for a convenience store, including point-of-sale transactions, real-time inventory tracking, sales reporting, and user access control. Built with VB.NET for the front-end interface and a Microsoft Access (.accdb) database for data persistence, it provided a reliable and efficient solution for the client's business needs.",
         technologies: ["VB.NET", "Microsoft Access", ".NET Framework"]
@@ -25,11 +25,11 @@ const projectData: Project[] = [
         title: "Self-Order Kiosk For Kuya Bert's Kitchenette", 
         description: "A modern, intuitive self-ordering kiosk application created for a local restaurant, built with React, TypeScript, and Supabase.",
         imageUrls: [
-          "/images/project2/home.jpg",
-          "/images/project2/home1.jpg",
-          "/images/project2/intro.jpg",
-          "/images/project2/revieworder.jpg",
-          "/images/project2/transaction.jpg"
+          "/Developer-Portfolio/images/project2/home.jpg",
+          "/Developer-Portfolio/images/project2/home1.jpg",
+          "/Developer-Portfolio/images/project2/intro.jpg",
+          "/Developer-Portfolio/images/project2/revieworder.jpg",
+          "/Developer-Portfolio/images/project2/transaction.jpg"
         ],
         fullDescription: "This solo project showcases proficiency in modern web technologies to create a seamless user experience. The kiosk allows customers to browse the menu, customize their orders, and complete payments without assistance. The front-end, built with React, Vite, and TypeScript, ensures a fast and responsive interface, while Tailwind CSS provides a clean and modern design. Supabase was utilized for the backend, handling the database, user authentication, and real-time order updates, demonstrating full-stack development capabilities.",
         technologies: ["React", "TypeScript", "Vite.js", "Tailwind CSS", "Supabase"]
@@ -178,19 +178,30 @@ const ProjectModal: React.FC<{
             )}
         </div>
         
-        <div className="p-4 sm:p-6 overflow-y-auto">
-            <h2 id="project-modal-title" className="text-lg sm:text-xl md:text-2xl font-bold text-white">{project.title}</h2>
-            
-            <div className="flex flex-wrap gap-1.5 my-3">
-                {project.technologies.map(tech => (
-                    <span key={tech} className="px-2 py-1 text-xs font-medium text-teal-300 bg-teal-900/50 rounded-full border border-teal-500/30">
-                        {tech}
-                    </span>
-                ))}
-            </div>
+    <div className="p-4 sm:p-6 overflow-y-auto">
+      <div className="flex items-center justify-between">
+        <h2 id="project-modal-title" className="text-lg sm:text-xl md:text-2xl font-bold text-white">{project.title}</h2>
+        {project.title === "Self-Order Kiosk For Kuya Bert's Kitchenette" && (
+          <a
+            href="https://self-order-kiosk-for-kuya-bert-kitchenette-erxaox94a.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4 inline-block rounded-md bg-gradient-to-r from-teal-500 to-cyan-500 px-5 py-2 text-base font-bold text-white shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30"
+          >
+            Check Live
+          </a>
+        )}
+      </div>
+      <div className="flex flex-wrap gap-1.5 my-3">
+        {project.technologies.map(tech => (
+          <span key={tech} className="px-2 py-1 text-xs font-medium text-teal-300 bg-teal-900/50 rounded-full border border-teal-500/30">
+            {tech}
+          </span>
+        ))}
+      </div>
 
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{project.fullDescription}</p>
-        </div>
+      <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{project.fullDescription}</p>
+    </div>
 
         <button
           onClick={onClose}

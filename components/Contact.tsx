@@ -116,8 +116,8 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} className={`flex min-h-[70vh] items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 animate-section ${isVisible ? 'is-visible' : ''}`}>
-      <div className="w-full max-w-lg text-center -mt-6">
+    <section ref={sectionRef} className={`flex min-h-[90vh] items-start justify-center px-4 pt-4 pb-2 sm:px-6 sm:pt-6 sm:pb-4 md:px-8 md:pt-8 md:pb-6 animate-section ${isVisible ? 'is-visible' : ''}`}>
+      <div className="w-full max-w-lg text-center mb-2">
         <div className="animate-item">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
             <span className="text-gray-600">GET IN </span>
@@ -131,7 +131,7 @@ const Contact: React.FC = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-6 sm:mt-8 rounded-2xl border border-teal-500/20 bg-gray-900/30 p-4 sm:p-6 animate-item delay-200">
+  <form onSubmit={handleSubmit} className="mt-2 sm:mt-4 rounded-2xl border border-teal-500/20 bg-gray-900/30 p-4 sm:p-6 animate-item delay-200">
           <div className="space-y-4 sm:space-y-5">
             <InputField
               id="name"
