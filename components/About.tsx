@@ -69,7 +69,7 @@ const About: React.FC = () => {
   }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className={`flex min-h-screen items-center justify-center px-4 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10 animate-section ${isVisible ? 'is-visible' : ''}`}>
+  <section ref={sectionRef} style={{overflowAnchor: 'none'}} className={`overflow-hidden flex min-h-screen items-center justify-center px-4 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10 animate-section ${isVisible ? 'is-visible' : ''}`}>
       <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 items-center">
         
         <div className="lg:col-span-2 flex justify-center items-center animate-item">

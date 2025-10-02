@@ -360,56 +360,64 @@ const Projects: React.FC = () => {
     if (selectedProjectIndex === null) return;
     setSelectedProjectIndex((selectedProjectIndex - 1 + allSlides.length) % allSlides.length);
   };
-
   return (
-  <>
-    <section ref={sectionRef} className={`flex min-h-screen items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 animate-section ${isVisible ? 'is-visible' : ''}`}>
-    <div className="text-center container mx-auto max-w-5xl -mt-16 sm:-mt-20">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white animate-item">My Work</h2>
-      <p className="mt-3 text-gray-400 mb-8 sm:mb-10 max-w-2xl mx-auto text-sm sm:text-base animate-item delay-100">Here are some of the projects I've developed, showcasing my skills in creating modern and functional solutions.</p>
-      <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl mx-auto h-60 sm:h-72 animate-item delay-200">
-        <div className="overflow-hidden w-full h-full">
-          <div className="flex transition-transform duration-500 ease-in-out h-full" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-            {slides.map((slide, index) => (
-              <div key={index} className="w-full flex-shrink-0 h-full p-1">
-                {'title' in slide ? (
-                  <ProjectCard 
-                    project={slide as Project} 
-                    onPause={() => setIsAutoScrollPaused(true)}
-                    onResume={() => setIsAutoScrollPaused(false)}
-                    onClick={() => setSelectedProjectIndex(index)}
-                  />
-                ) : (
-                  <CtaCard />
-                )}
+    <>
+      <section
+        ref={sectionRef}
+        style={{overflowAnchor: 'none'}}
+        className={`relative overflow-hidden min-h-screen flex items-center justify-center animate-section ${isVisible ? 'is-visible' : ''}`}>
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="flex flex-col items-center text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white animate-item">My Work</h2>
+            <p className="mt-3 text-gray-400 mb-8 sm:mb-10 max-w-2xl text-sm sm:text-base animate-item delay-100">Here are some of the projects I've developed, showcasing my skills in creating modern and functional solutions.</p>
+
+            <div className="relative w-full max-w-3xl mx-auto h-64 sm:h-72 md:h-80 animate-item delay-200">
+              <div className="overflow-hidden w-full h-full rounded-lg">
+                <div className="flex transition-transform duration-500 ease-in-out h-full" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                  {slides.map((slide, index) => (
+                    <div key={index} className="w-full flex-shrink-0 h-full p-1">
+                      {'title' in slide ? (
+                        <ProjectCard
+                          project={slide as Project}
+                          onPause={() => setIsAutoScrollPaused(true)}
+                          onResume={() => setIsAutoScrollPaused(false)}
+                          onClick={() => setSelectedProjectIndex(index)}
+                        />
+                      ) : (
+                        <CtaCard />
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+
+              <button onClick={prevSlide} className="absolute top-1/2 -translate-y-1/2 -left-3 z-10 p-1.5 rounded-full bg-gray-800/80 text-white hover:bg-teal-500/50 transition-all" aria-label="Previous Project">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button onClick={nextSlide} className="absolute top-1/2 -translate-y-1/2 -right-3 z-10 p-1.5 rounded-full bg-gray-800/80 text-white hover:bg-teal-500/50 transition-all" aria-label="Next Project">
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="mt-8 sm:mt-10 animate-item delay-300">
+              <a href="#contact" className="inline-block rounded-md bg-gradient-to-r from-teal-500 to-cyan-500 px-6 py-3 text-base md:px-8 md:py-4 md:text-lg text-white font-bold shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30">
+                Bring Your Vision to Life
+              </a>
+            </div>
           </div>
         </div>
-        <button onClick={prevSlide} className="absolute top-1/2 -translate-y-1/2 -left-3 z-10 p-1.5 rounded-full bg-gray-800/80 text-white hover:bg-teal-500/50 transition-all" aria-label="Previous Project">
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        <button onClick={nextSlide} className="absolute top-1/2 -translate-y-1/2 -right-3 z-10 p-1.5 rounded-full bg-gray-800/80 text-white hover:bg-teal-500/50 transition-all" aria-label="Next Project">
-          <ChevronRight className="w-5 h-5" />
-        </button>
-      </div>
-      <div className="mt-6 sm:mt-8 animate-item delay-300">
-        <a href="#contact" className="inline-block rounded-md bg-gradient-to-r from-teal-500 to-cyan-500 px-6 py-3 text-base md:px-8 md:py-4 md:text-lg text-white font-bold shadow-lg shadow-teal-500/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/30">
-          Bring Your Vision to Life
-        </a>
-      </div>
-    </div>
-    </section>
-    <ProjectModal
-    project={selectedProject}
-    onClose={() => setSelectedProjectIndex(null)}
-    onNext={handleModalNext}
-    onPrev={handleModalPrev}
-    isFirst={false}
-    isLast={false}
-    isAd={isAdModal}
-    />
-  </>
+      </section>
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProjectIndex(null)}
+        onNext={handleModalNext}
+        onPrev={handleModalPrev}
+        isFirst={false}
+        isLast={false}
+        isAd={isAdModal}
+      />
+    </>
   );
 };
 
