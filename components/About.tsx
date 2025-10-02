@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const EducationItem: React.FC<{ title: string; period: string; institution: string; description?: string; }> = ({ title, period, institution, description }) => (
     <li className="flex items-start">
-        <div className="mt-1.5 mr-3 flex h-3 w-3 items-center justify-center flex-shrink-0">
-            <div className="h-2 w-2 rounded-full bg-teal-400 shadow-[0_0_6px_2px_rgba(52,211,153,0.7)] animate-pulse"></div>
+        <div className="mt-1 mr-2 sm:mt-1.5 sm:mr-3 flex h-2.5 w-2.5 sm:h-3 sm:w-3 items-center justify-center flex-shrink-0">
+            <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-teal-400 shadow-[0_0_6px_2px_rgba(52,211,153,0.7)] animate-pulse"></div>
         </div>
         <div className="flex-grow">
-            <h4 className="font-bold text-white uppercase tracking-wider text-sm sm:text-base lg:text-lg">{title}</h4>
-            <p className="text-sm text-gray-400 mt-1">{period}</p>
-            <p className="text-gray-300 mt-2 text-sm sm:text-base">{institution}</p>
-            {description && <p className="text-gray-400 mt-2 text-sm sm:text-base italic leading-relaxed">{description}</p>}
+            <h4 className="font-bold text-white uppercase tracking-wider text-xs sm:text-sm lg:text-base">{title}</h4>
+            <p className="text-xs sm:text-sm text-gray-400 mt-0.5 sm:mt-1">{period}</p>
+            <p className="text-gray-300 mt-1 sm:mt-2 text-xs sm:text-sm">{institution}</p>
+            {description && <p className="text-gray-400 mt-1 sm:mt-2 text-xs sm:text-sm italic leading-relaxed">{description}</p>}
         </div>
     </li>
 );
@@ -93,7 +93,7 @@ const About: React.FC = () => {
             Highly motivated Computer Science fresh graduate specializing in front-end development. Skilled in building responsive applications with React, Vite.js, Tailwind CSS, and Supabase. Seeking an entry-level opportunity to apply my skills, learn from experienced developers, and contribute to impactful projects.
           </p>
 
-          <div className="relative mt-4 sm:mt-6 lg:mt-8 animate-item delay-400 h-[300px] sm:h-[340px] lg:h-[360px] overflow-hidden">
+          <div className="relative mt-3 sm:mt-6 lg:mt-8 animate-item delay-400 h-[350px] sm:h-[420px] lg:h-[440px] overflow-hidden">
             {/* Education Section */}
             <div className={`absolute w-full transition-all duration-700 ease-in-out ${activeInfo === 'education' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
               <h3 className="text-base sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4 border-l-3 border-teal-400 pl-4">Education</h3>

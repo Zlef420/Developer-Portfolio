@@ -363,10 +363,10 @@ const Projects: React.FC = () => {
 
   return (
   <>
-    <section ref={sectionRef} className={`flex min-h-[70vh] items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 animate-section ${isVisible ? 'is-visible' : ''}`}>
-    <div className="text-center container mx-auto max-w-5xl">
+    <section ref={sectionRef} className={`flex min-h-screen items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 animate-section ${isVisible ? 'is-visible' : ''}`}>
+    <div className="text-center container mx-auto max-w-5xl -mt-16 sm:-mt-20">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white animate-item">My Work</h2>
-      <p className="mt-3 text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base animate-item delay-100">Here are some of the projects I've developed, showcasing my skills in creating modern and functional solutions.</p>
+      <p className="mt-3 text-gray-400 mb-8 sm:mb-10 max-w-2xl mx-auto text-sm sm:text-base animate-item delay-100">Here are some of the projects I've developed, showcasing my skills in creating modern and functional solutions.</p>
       <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl mx-auto h-60 sm:h-72 animate-item delay-200">
         <div className="overflow-hidden w-full h-full">
           <div className="flex transition-transform duration-500 ease-in-out h-full" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>

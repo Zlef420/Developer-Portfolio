@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
           I'm a passionate <span className="text-teal-400 font-medium border-b border-teal-400/50 pr-1">{currentRole}</span><span className="inline-block w-0.5 h-6 bg-teal-400 animate-pulse" style={{ verticalAlign: '-3px' }}></span>.
         </p>
         
-        <nav className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 md:gap-x-8 text-base md:text-lg animate-item delay-300">
+        <nav className="mt-10 flex justify-center gap-x-2 sm:gap-x-4 md:gap-x-6 text-sm sm:text-base md:text-lg animate-item delay-300">
           <NavLink href="#home" active>Home</NavLink>
           <NavLink href="#about">About</NavLink>
           <NavLink href="#projects">Projects</NavLink>
